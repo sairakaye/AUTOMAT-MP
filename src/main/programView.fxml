@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,7 +21,7 @@
             <Image url="@../res/Rocket.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="transportButton" layoutX="817.0" layoutY="604.0" onAction="#goToAnotherPlace" prefHeight="94.0" prefWidth="233.0" text="Transport" textFill="WHITE">
+      <JFXButton fx:id="transportButton" focusTraversable="false" layoutX="826.0" layoutY="621.0" onAction="#goToAnotherPlace" prefHeight="84.0" prefWidth="224.0" text="Transport" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
@@ -30,17 +31,74 @@
             <Image url="@../res/scientist.png" />
          </image>
       </ImageView>
-      <JFXTextArea fx:id="transportLog" editable="false" focusColor="#fbed2d" layoutX="111.0" layoutY="46.0" prefHeight="164.0" prefWidth="360.0" style="-fx-text-fill: #ffffff; -fx-background-color: #14213e;" />
-      <JFXTextArea fx:id="solutionLog" editable="false" focusColor="#fbed2d" layoutX="434.0" layoutY="520.0" prefHeight="178.0" prefWidth="360.0" style="-fx-text-fill: #ffffff; -fx-background-color: #14213e;" />
-      <Label layoutX="437.0" layoutY="501.0" text="Solution" textFill="WHITE">
+      <JFXTextArea fx:id="transportLog" disable="true" editable="false" focusColor="#fbed2d" focusTraversable="false" layoutX="111.0" layoutY="46.0" prefHeight="164.0" prefWidth="360.0" style="-fx-text-fill: #ffffff; -fx-background-color: #14213e; -fx-opacity: 1;">
+         <cursor>
+            <Cursor fx:constant="NONE" />
+         </cursor></JFXTextArea>
+      <JFXTextArea fx:id="solutionLog" disable="true" editable="false" focusColor="#fbed2d" focusTraversable="false" layoutX="434.0" layoutY="520.0" prefHeight="178.0" prefWidth="360.0" style="-fx-text-fill: #ffffff; -fx-background-color: #14213e; -fx-opacity: 1;">
+         <cursor>
+            <Cursor fx:constant="NONE" />
+         </cursor>
+      </JFXTextArea>
+      <Label layoutX="437.0" layoutY="497.0" text="Solution" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <JFXButton layoutX="823.0" layoutY="512.0" prefHeight="94.0" prefWidth="223.0" text="Hint" textFill="WHITE">
+      <JFXButton fx:id="hintButton" focusTraversable="false" layoutX="826.0" layoutY="530.0" onAction="#addTextToSolutionLog" prefHeight="76.0" prefWidth="224.0" text="Hint" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </JFXButton>
+      <JFXButton fx:id="hintButton1" focusTraversable="false" layoutX="826.0" layoutY="440.0" prefHeight="70.0" prefWidth="224.0" text="Start Over" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </JFXButton>
+      <ImageView fx:id="earthBoy" fitHeight="99.0" fitWidth="51.0" layoutX="47.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/human1.png" />
+         </image></ImageView>
+      <ImageView fx:id="earthGirl" fitHeight="95.0" fitWidth="51.0" layoutX="144.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/human2.png" />
+         </image></ImageView>
+      <ImageView fx:id="earthLion" fitHeight="71.0" fitWidth="76.0" layoutX="4.0" layoutY="578.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/lion.png" />
+         </image></ImageView>
+      <ImageView fx:id="earthCow" fitHeight="71.0" fitWidth="61.0" layoutX="186.0" layoutY="581.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/cow.png" />
+         </image></ImageView>
+      <ImageView fx:id="earthGrain" fitHeight="78.0" fitWidth="78.0" layoutX="86.0" layoutY="630.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/grain.png" />
+         </image></ImageView>
+      <ImageView fx:id="marsBoy" fitHeight="99.0" fitWidth="51.0" layoutX="854.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../res/human1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="marsGirl" fitHeight="95.0" fitWidth="51.0" layoutX="951.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../res/human2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="marsLion" fitHeight="71.0" fitWidth="76.0" layoutX="811.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../res/lion.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="marsCow" fitHeight="71.0" fitWidth="61.0" layoutX="993.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../res/cow.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="marsGrain" fitHeight="78.0" fitWidth="78.0" layoutX="893.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../res/grain.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
