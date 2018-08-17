@@ -1,1 +1,3 @@
 # AUTOMAT-MP
+
+A project in AUTOMAT S17 T3 2017-2018.
