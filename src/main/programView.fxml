@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,7 +20,24 @@
             <Image url="@../res/Rocket.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="lezzGo" layoutX="776.0" layoutY="564.0" onAction="#goToAnotherPlace" prefHeight="128.0" prefWidth="263.0" text="Lezz gooo" textFill="WHITE">
+      <JFXButton fx:id="transportButton" layoutX="817.0" layoutY="604.0" onAction="#goToAnotherPlace" prefHeight="94.0" prefWidth="233.0" text="Transport" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="150.0" fitWidth="82.0" layoutX="16.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/scientist.png" />
+         </image>
+      </ImageView>
+      <JFXTextArea fx:id="transportLog" editable="false" focusColor="#fbed2d" layoutX="111.0" layoutY="46.0" prefHeight="164.0" prefWidth="360.0" style="-fx-text-fill: #ffffff; -fx-background-color: #14213e;" />
+      <JFXTextArea fx:id="solutionLog" editable="false" focusColor="#fbed2d" layoutX="434.0" layoutY="520.0" prefHeight="178.0" prefWidth="360.0" style="-fx-text-fill: #ffffff; -fx-background-color: #14213e;" />
+      <Label layoutX="437.0" layoutY="501.0" text="Solution" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="823.0" layoutY="512.0" prefHeight="94.0" prefWidth="223.0" text="Hint" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
