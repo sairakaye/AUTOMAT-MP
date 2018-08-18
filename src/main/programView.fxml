@@ -50,7 +50,7 @@
             <Font size="36.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="hintButton1" focusTraversable="false" layoutX="826.0" layoutY="440.0" prefHeight="70.0" prefWidth="224.0" text="Start Over" textFill="WHITE">
+      <JFXButton fx:id="startOverButton" focusTraversable="false" layoutX="826.0" layoutY="440.0" onAction="#startOverTheGame" prefHeight="70.0" prefWidth="224.0" text="Start Over" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
@@ -100,5 +100,10 @@
             <Image url="@../res/grain.png" />
          </image>
       </ImageView>
+      <Label fx:id="gameOverLabel" layoutX="295.0" layoutY="301.0" text="GAME OVER!" textFill="#c90000">
+         <font>
+            <Font name="System Bold" size="80.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

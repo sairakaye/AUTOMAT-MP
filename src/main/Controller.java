@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextArea;
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -17,7 +18,7 @@ public class Controller {
 
     /**
      *  earthBoy - Human # 1
-     *  earth Girl - Human # 2
+     *  earthGirl - Human # 2
      */
 
     @FXML
@@ -32,13 +33,23 @@ public class Controller {
     @FXML
     JFXTextArea transportLog, solutionLog;
 
-    private boolean isOnEarth = true;
+    @FXML
+    Label gameOverLabel;
+
+    private boolean isOnEarth;
+    private boolean isGameOver;
     private TranslateTransition animateRocket;
     private ArrayList<String> tempPassengers;
 
     // The "Constructor" of JavaFX
     @FXML
     public void initialize() {
+        isOnEarth = true;
+        isGameOver = false;
+
+        startOverButton.setDisable(true);
+        gameOverLabel.setVisible(false);
+
         tempPassengers = new ArrayList<>();
 
         animateRocket = new TranslateTransition(Duration.millis(2000), rocket);
@@ -49,13 +60,15 @@ public class Controller {
                 transportButton.setDisable(true);
             } else {
                 System.out.println("Arrived at the destination!");
-                transportButton.setDisable(false);
 
                 if (isOnEarth) {
                     rocket.setRotate(50f);
                 } else {
                     rocket.setRotate(-130f);
                 }
+
+                if (!isGameOver)
+                    transportButton.setDisable(false);
             }
         });
 
@@ -65,6 +78,14 @@ public class Controller {
 
     public void goToAnotherPlace() {
         removeEffectsTransport();
+
+        // Not realistic pero oks na yan. Mauuna sila bago spaceship haha.
+        addObjectsTransport();
+
+        // For checking of the passengers only. Can be removed.
+        for (int i = 0; i <  tempPassengers.size(); i++) {
+            System.out.println(tempPassengers.get(i));
+        }
 
         if (isOnEarth) {
             animateRocket.setByX(300f);
@@ -76,24 +97,23 @@ public class Controller {
             isOnEarth = true;
         }
 
-        animateRocket.setRate(1.5f);
-        animateRocket.play();
+        /** Insert Back-End Logic Here
+         *  Add na lang ng controller for back-end kung overwhelming na rito haha.
+         */
+
+       // isGameOver = true;
+
+        if (isGameOver) {
+            declareGameOver();
+        } else {
+            animateRocket.play();
+        }
 
         // Mauuna talaga yung mga objects tapos susunod na yung rocket (hindi realistic lol).
-        addObjectsTransport();
 
         // Lahat ng mga nangyari, i-append na lang sa text area na ito.
         addTextToTransportLog();
 
-
-        // For checking of the passengers only
-        for (int i = 0; i <  tempPassengers.size(); i++) {
-            System.out.println(tempPassengers.get(i));
-        }
-
-        /** Insert Back-End Logic Here
-         *  Add na lang ng controller for back-end kung overwhelming na rito haha.
-         */
         tempPassengers.clear();
     }
 
@@ -104,12 +124,52 @@ public class Controller {
 
     public void addTextToSolutionLog() {
         solutionLog.appendText("Append rito yung pag mag-hihint na ang lola mo. Pak ganern!\n");
+        declareGameOver();
     }
 
-    public void setStartOverButton() {
-
+    public void declareGameOver() {
+        rocket.setVisible(false);
+        gameOverLabel.setVisible(true);
+        transportButton.setDisable(true);
+        hintButton.setDisable(true);
+        startOverButton.setDisable(false);
     }
 
+    public void startOverTheGame() {
+        removeEffectsTransport();
+        gameOverLabel.setVisible(false);
+        startOverButton.setDisable(true);
+        hintButton.setDisable(false);
+        transportButton.setDisable(false);
+
+        rocket.setVisible(true);
+
+        if (!isOnEarth) {
+            animateRocket.setByX(-300f);
+            animateRocket.setByY(300f);
+            animateRocket.play();
+            isOnEarth = true;
+        }
+
+        isGameOver = false;
+        tempPassengers.clear();
+
+        earthBoy.setVisible(true);
+        earthGirl.setVisible(true);
+        earthCow.setVisible(true);
+        earthGrain.setVisible(true);
+        earthLion.setVisible(true);
+
+        marsBoy.setVisible(false);
+        marsGirl.setVisible(false);
+        marsGrain.setVisible(false);
+        marsCow.setVisible(false);
+        marsLion.setVisible(false);
+    }
+
+    /** GUI-related methods
+     *  MouseListeners, effects to the ImageView etc.
+     */
     private void removeEffectsTransport() {
         for (int i = 0;  i < tempPassengers.size(); i++) {
             if (tempPassengers.get(i).equalsIgnoreCase("Boy")) {
@@ -159,31 +219,31 @@ public class Controller {
     private void addObjectsTransport() {
         for (int i = 0;  i < tempPassengers.size(); i++) {
             if (tempPassengers.get(i).equalsIgnoreCase("Boy")) {
-                if (isOnEarth) {
+                if (!isOnEarth) {
                     earthBoy.setVisible(true);
                 } else {
                     marsBoy.setVisible(true);
                 }
             } else if (tempPassengers.get(i).equalsIgnoreCase("Girl")) {
-                if (isOnEarth) {
+                if (!isOnEarth) {
                     earthGirl.setVisible(true);
                 } else {
                     marsGirl.setVisible(true);
                 }
             } else if (tempPassengers.get(i).equalsIgnoreCase("Lion")) {
-                if (isOnEarth) {
+                if (!isOnEarth) {
                     earthLion.setVisible(true);
                 } else {
                     marsLion.setVisible(true);
                 }
             } else if (tempPassengers.get(i).equalsIgnoreCase("Grain")) {
-                if (isOnEarth) {
+                if (!isOnEarth) {
                     earthGrain.setVisible(true);
                 } else {
                     marsGrain.setVisible(true);
                 }
             } else if (tempPassengers.get(i).equalsIgnoreCase("Cow")) {
-                if (isOnEarth) {
+                if (!isOnEarth) {
                     earthCow.setVisible(true);
                 } else {
                     marsCow.setVisible(true);
@@ -194,7 +254,7 @@ public class Controller {
 
     private void addEarthMouseListeners() {
         earthBoy.setOnMouseClicked(event -> {
-            if (earthBoy.isVisible() && isOnEarth) {
+            if (earthBoy.isVisible() && isOnEarth && !isGameOver) {
                 if (tempPassengers.size() <= 2) {
                     if (tempPassengers.indexOf("Boy") < 0 && tempPassengers.size() != 2) {
                         tempPassengers.add("Boy");
@@ -211,7 +271,7 @@ public class Controller {
         });
 
         earthGirl.setOnMouseClicked(event -> {
-            if (earthGirl.isVisible() && isOnEarth) {
+            if (earthGirl.isVisible() && isOnEarth && !isGameOver) {
                 if (tempPassengers.size() <= 2) {
                     if (tempPassengers.indexOf("Girl") < 0 && tempPassengers.size() != 2) {
                         tempPassengers.add("Girl");
@@ -228,7 +288,7 @@ public class Controller {
         });
 
         earthGrain.setOnMouseClicked(event -> {
-            if (earthGrain.isVisible() && isOnEarth) {
+            if (earthGrain.isVisible() && isOnEarth && !isGameOver) {
                 if (tempPassengers.size() <= 2) {
                     if (tempPassengers.indexOf("Grain") < 0 && tempPassengers.size() != 2) {
                         tempPassengers.add("Grain");
@@ -245,7 +305,7 @@ public class Controller {
         });
 
         earthCow.setOnMouseClicked(event -> {
-            if (earthCow.isVisible() && isOnEarth) {
+            if (earthCow.isVisible() && isOnEarth && !isGameOver) {
                 if (tempPassengers.size() <= 2) {
                     if (tempPassengers.indexOf("Cow") < 0 && tempPassengers.size() != 2) {
                         tempPassengers.add("Cow");
@@ -262,7 +322,7 @@ public class Controller {
         });
 
         earthLion.setOnMouseClicked(event -> {
-            if (earthLion.isVisible() && isOnEarth) {
+            if (earthLion.isVisible() && isOnEarth && !isGameOver) {
                 if (tempPassengers.size() <= 2) {
                     if (tempPassengers.indexOf("Lion") < 0 && tempPassengers.size() != 2) {
                         tempPassengers.add("Lion");
@@ -282,7 +342,7 @@ public class Controller {
 
     private void addMarsMouseListeners() {
         marsBoy.setOnMouseClicked(event -> {
-            if (marsBoy.isVisible() && !isOnEarth) {
+            if (marsBoy.isVisible() && !isOnEarth && !isGameOver) {
                 if (tempPassengers.size() <= 2) {
                     if (tempPassengers.indexOf("Boy") < 0 && tempPassengers.size() != 2) {
                         tempPassengers.add("Boy");
@@ -299,7 +359,7 @@ public class Controller {
         });
 
         marsGirl.setOnMouseClicked(event -> {
-            if (marsGirl.isVisible() && !isOnEarth) {
+            if (marsGirl.isVisible() && !isOnEarth && !isGameOver) {
                 if (tempPassengers.size() <= 2) {
                     if (tempPassengers.indexOf("Girl") < 0 && tempPassengers.size() != 2) {
                         tempPassengers.add("Girl");
@@ -316,7 +376,7 @@ public class Controller {
         });
 
         marsGrain.setOnMouseClicked(event -> {
-            if (marsGrain.isVisible() && !isOnEarth) {
+            if (marsGrain.isVisible() && !isOnEarth && !isGameOver) {
                 if (tempPassengers.size() <= 2) {
                     if (tempPassengers.indexOf("Grain") < 0 && tempPassengers.size() != 2) {
                         tempPassengers.add("Grain");
@@ -333,7 +393,7 @@ public class Controller {
         });
 
         marsCow.setOnMouseClicked(event -> {
-            if (marsCow.isVisible() && !isOnEarth) {
+            if (marsCow.isVisible() && !isOnEarth && !isGameOver) {
                 if (tempPassengers.size() <= 2) {
                     if (tempPassengers.indexOf("Cow") < 0 && tempPassengers.size() != 2) {
                         tempPassengers.add("Cow");
@@ -350,7 +410,7 @@ public class Controller {
         });
 
         marsLion.setOnMouseClicked(event -> {
-            if (marsLion.isVisible() && !isOnEarth) {
+            if (marsLion.isVisible() && !isOnEarth && !isGameOver) {
                 if (tempPassengers.size() <= 2) {
                     if (tempPassengers.indexOf("Lion") < 0 && tempPassengers.size() != 2) {
                         tempPassengers.add("Lion");

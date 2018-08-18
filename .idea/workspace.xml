@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added textboxs and buttons.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Front-end working.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AUTOMAT-MP/main/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AUTOMAT-MP/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AUTOMAT-MP/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AUTOMAT-MP/main/view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AUTOMAT-MP/main/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AUTOMAT-MP/main/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/programView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/programView.fxml" afterDir="false" />
     </list>
@@ -68,15 +66,26 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="109" column="8" selection-start-line="109" selection-start-column="8" selection-end-line="109" selection-end-column="8" />
+            <state relative-caret-position="2244">
+              <caret line="132" column="41" lean-forward="true" selection-start-line="132" selection-start-column="41" selection-end-line="132" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#startOverTheGame#0;class#Controller#0" />
                 <element signature="method#removeEffectsTransport#0;class#Controller#0" />
                 <element signature="method#addObjectsTransport#0;class#Controller#0" />
                 <element signature="method#addEarthMouseListeners#0;class#Controller#0" />
-                <element signature="method#&lt;unnamed&gt;#0;class#Controller#0" />
+                <element signature="method#addMarsMouseListeners#0;class#Controller#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="programView.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/programView.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="169" selection-start-line="11" selection-start-column="169" selection-end-line="11" selection-end-column="169" />
             </state>
           </provider>
         </entry>
@@ -84,7 +93,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="172">
               <caret line="12" column="73" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -99,6 +108,7 @@
     <findStrings>
       <find>jfx</find>
       <find>Testing</find>
+      <find>start</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -144,19 +154,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="AUTOMAT-MP" type="b2602c69:ProjectViewProjectNode" />
               <item name="AUTOMAT-MP" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AUTOMAT-MP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AUTOMAT-MP" type="462c0819:PsiDirectoryNode" />
-              <item name="extern" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AUTOMAT-MP" type="b2602c69:ProjectViewProjectNode" />
@@ -179,7 +183,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -317,7 +322,11 @@
       <workItem from="1534503831691" duration="5503000" />
       <workItem from="1534513953427" duration="4770000" />
       <workItem from="1534523728904" duration="2531000" />
-      <workItem from="1534526694327" duration="6390000" />
+      <workItem from="1534526694327" duration="6439000" />
+      <workItem from="1534559264841" duration="2202000" />
+      <workItem from="1534565138466" duration="396000" />
+      <workItem from="1534565758005" duration="1141000" />
+      <workItem from="1534583504158" duration="4217000" />
     </task>
     <task id="LOCAL-00001" summary="Background added.">
       <created>1534506304743</created>
@@ -340,11 +349,18 @@
       <option name="project" value="LOCAL" />
       <updated>1534516437646</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Front-end working.">
+      <created>1534533173416</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1534533173416</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22124000" />
+    <option name="totallyTimeSpent" value="30129000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
@@ -356,22 +372,22 @@
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50033534" side_tool="true" weight="0.32859176" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.501006" side_tool="true" weight="0.32859176" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966466" visible="true" weight="0.32859176" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49899396" visible="true" weight="0.3328592" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21193829" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22334003" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="4" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997155" />
       <window_info anchor="right" id="JetGradle" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -397,11 +413,12 @@
     <MESSAGE value="Background added." />
     <MESSAGE value="Animation of the rocketship added." />
     <MESSAGE value="Added textboxs and buttons." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added textboxs and buttons." />
+    <MESSAGE value="Front-end working." />
+    <option name="LAST_COMMIT_MESSAGE" value="Front-end working." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -411,14 +428,115 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2567">
+          <caret line="151" column="10" selection-start-line="151" selection-start-column="10" selection-end-line="151" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#startOverTheGame#0;class#Controller#0" />
+            <element signature="method#removeEffectsTransport#0;class#Controller#0" />
+            <element signature="method#addObjectsTransport#0;class#Controller#0" />
+            <element signature="method#addEarthMouseListeners#0;class#Controller#0" />
+            <element signature="method#addMarsMouseListeners#0;class#Controller#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="73" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1717">
+          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#startOverTheGame#0;class#Controller#0" />
+            <element signature="method#removeEffectsTransport#0;class#Controller#0" />
+            <element signature="method#addObjectsTransport#0;class#Controller#0" />
+            <element signature="method#addEarthMouseListeners#0;class#Controller#0" />
+            <element signature="method#addMarsMouseListeners#0;class#Controller#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="73" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1683">
+          <caret line="99" column="31" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#startOverTheGame#0;class#Controller#0" />
+            <element signature="method#removeEffectsTransport#0;class#Controller#0" />
+            <element signature="method#addObjectsTransport#0;class#Controller#0" />
+            <element signature="method#addEarthMouseListeners#0;class#Controller#0" />
+            <element signature="method#addMarsMouseListeners#0;class#Controller#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="73" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1853">
+          <caret line="109" selection-start-line="109" selection-end-line="109" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#startOverTheGame#0;class#Controller#0" />
+            <element signature="method#removeEffectsTransport#0;class#Controller#0" />
+            <element signature="method#addObjectsTransport#0;class#Controller#0" />
+            <element signature="method#addEarthMouseListeners#0;class#Controller#0" />
+            <element signature="method#addMarsMouseListeners#0;class#Controller#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="73" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1938">
           <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#startOverTheGame#0;class#Controller#0" />
             <element signature="method#removeEffectsTransport#0;class#Controller#0" />
             <element signature="method#addObjectsTransport#0;class#Controller#0" />
             <element signature="method#addEarthMouseListeners#0;class#Controller#0" />
-            <element signature="method#&lt;unnamed&gt;#0;class#Controller#0" />
+            <element signature="method#addMarsMouseListeners#0;class#Controller#0" />
           </folding>
         </state>
       </provider>
@@ -439,10 +557,11 @@
           <caret line="76" column="16" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#startOverTheGame#0;class#Controller#0" />
             <element signature="method#removeEffectsTransport#0;class#Controller#0" />
             <element signature="method#addObjectsTransport#0;class#Controller#0" />
             <element signature="method#addEarthMouseListeners#0;class#Controller#0" />
-            <element signature="method#&lt;unnamed&gt;#0;class#Controller#0" />
+            <element signature="method#addMarsMouseListeners#0;class#Controller#0" />
           </folding>
         </state>
       </provider>
@@ -463,10 +582,11 @@
           <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#startOverTheGame#0;class#Controller#0" />
             <element signature="method#removeEffectsTransport#0;class#Controller#0" />
             <element signature="method#addObjectsTransport#0;class#Controller#0" />
             <element signature="method#addEarthMouseListeners#0;class#Controller#0" />
-            <element signature="method#&lt;unnamed&gt;#0;class#Controller#0" />
+            <element signature="method#addMarsMouseListeners#0;class#Controller#0" />
           </folding>
         </state>
       </provider>
@@ -520,16 +640,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/programView.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="-374">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
           <caret line="11" column="169" selection-start-line="11" selection-start-column="169" selection-end-line="11" selection-end-column="169" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="172">
           <caret line="12" column="73" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -539,14 +659,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="109" column="8" selection-start-line="109" selection-start-column="8" selection-end-line="109" selection-end-column="8" />
+        <state relative-caret-position="2244">
+          <caret line="132" column="41" lean-forward="true" selection-start-line="132" selection-start-column="41" selection-end-line="132" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#startOverTheGame#0;class#Controller#0" />
             <element signature="method#removeEffectsTransport#0;class#Controller#0" />
             <element signature="method#addObjectsTransport#0;class#Controller#0" />
             <element signature="method#addEarthMouseListeners#0;class#Controller#0" />
-            <element signature="method#&lt;unnamed&gt;#0;class#Controller#0" />
+            <element signature="method#addMarsMouseListeners#0;class#Controller#0" />
           </folding>
         </state>
       </provider>
