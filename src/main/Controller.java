@@ -40,12 +40,20 @@ public class Controller {
     private boolean isGameOver;
     private TranslateTransition animateRocket;
     private ArrayList<String> tempPassengers;
+    private Node initialNode;
+    private Node curNode;
+    private Ship shipObj;
+    private BFS searcher;
 
     // The "Constructor" of JavaFX
     @FXML
     public void initialize() {
         isOnEarth = true;
         isGameOver = false;
+        initialNode = new Node(2, 1, 1, 1, Position.EARTH, 0, 0, 0, 0);
+        curNode = initialNode;
+        searcher = new BFS();
+        shipObj = new Ship();
 
         startOverButton.setDisable(true);
         gameOverLabel.setVisible(false);
@@ -83,7 +91,7 @@ public class Controller {
         addObjectsTransport();
 
         // For checking of the passengers only. Can be removed.
-        for (int i = 0; i <  tempPassengers.size(); i++) {
+        for (int i = 0; i < tempPassengers.size(); i++) {
             System.out.println(tempPassengers.get(i));
         }
 
@@ -100,8 +108,15 @@ public class Controller {
         /** Insert Back-End Logic Here
          *  Add na lang ng controller for back-end kung overwhelming na rito haha.
          */
+        curNode = new Node(earthBoy.isVisible(), earthGirl.isVisible(), earthLion.isVisible(), earthCow.isVisible(), earthGrain.isVisible(), isOnEarth,
+                           marsBoy.isVisible(), marsGirl.isVisible(), marsLion.isVisible(), marsCow.isVisible(), marsGrain.isVisible());
 
-       // isGameOver = true;
+        if (!curNode.isValid())
+            isGameOver = true;
+        if (curNode.isAccepting())
+            isGameOver = true;
+
+        // isGameOver = true;
 
         if (isGameOver) {
             declareGameOver();
