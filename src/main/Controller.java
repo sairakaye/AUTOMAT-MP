@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
     @FXML
@@ -42,7 +43,6 @@ public class Controller {
     private ArrayList<String> tempPassengers;
     private Node initialNode;
     private Node curNode;
-    private Ship shipObj;
     private BFS searcher;
 
     // The "Constructor" of JavaFX
@@ -53,7 +53,6 @@ public class Controller {
         initialNode = new Node(2, 1, 1, 1, Position.EARTH, 0, 0, 0, 0);
         curNode = initialNode;
         searcher = new BFS();
-        shipObj = new Ship();
 
         startOverButton.setDisable(true);
         gameOverLabel.setVisible(false);
@@ -110,6 +109,7 @@ public class Controller {
          */
         curNode = new Node(earthBoy.isVisible(), earthGirl.isVisible(), earthLion.isVisible(), earthCow.isVisible(), earthGrain.isVisible(), isOnEarth,
                            marsBoy.isVisible(), marsGirl.isVisible(), marsLion.isVisible(), marsCow.isVisible(), marsGrain.isVisible());
+        searcher.search(curNode);
 
         if (!curNode.isValid())
             isGameOver = true;
@@ -133,12 +133,62 @@ public class Controller {
     }
 
     public void addTextToTransportLog() {
-        transportLog.appendText("What state?\n");
-        transportLog.appendText("Memaaaaaaaa!\n");
+        if (curNode.isAccepting())
+            transportLog.appendText("YOU HAVE REACHED THE GOAL STATE!\n");
+        else{
+            transportLog.appendText("YOU ARE CURRENTLY ON ");
+            if (curNode.getShipAt() == Position.EARTH) {
+                transportLog.appendText("EARTH WITH:\n");
+                transportLog.appendText(curNode.getnPersonEarth() + " human(s), ");
+                transportLog.appendText(curNode.getnLionEarth() + " lion(s), ");
+                transportLog.appendText(curNode.getnCowEarth() + " cow(s), ");
+                transportLog.appendText(curNode.getnGrainEarth() + " grain(s)\n\n");
+            } else {
+                transportLog.appendText("MARS WITH:\n");
+                transportLog.appendText(curNode.getnPersonMars() + " human(s), ");
+                transportLog.appendText(curNode.getnLionMars() + " lion(s), ");
+                transportLog.appendText(curNode.getnCowMars() + " cow(s), ");
+                transportLog.appendText(curNode.getnGrainMars() + " grain(s)\n\n");
+            }
+        }
     }
 
     public void addTextToSolutionLog() {
-        solutionLog.appendText("Append rito yung pag mag-hihint na ang lola mo. Pak ganern!\n");
+        solutionLog.clear();
+        //solutionLog.appendText("Append rito yung pag mag-hihint na ang lola mo. Pak ganern!\n");
+        List<Node> path = curNode.getSolution(searcher.search(curNode));
+        if (path != null) {
+            int depth = path.size() - 1;
+            int j = 1;
+            for (int i = depth - 1; i >= 0; i--) {
+                Node state = path.get(i);
+                if (state.isAccepting()) {
+                    solutionLog.appendText("" + j + ". " + state.toString());
+                } else {
+                    solutionLog.appendText("" + j + ". " + state.toString());
+                }
+                j++;
+            }
+            path = curNode.getSolution(searcher.searchV2(curNode));
+            if (path != null) {
+                solutionLog.appendText("\nALTERNATE SOLUTION\n");
+                depth = path.size() - 1;
+                j = 1;
+                for (int i = depth - 1; i >= 0; i--) {
+                    Node state = path.get(i);
+                    if (state.isAccepting()) {
+                        solutionLog.appendText("" + j + ". " + state.toString());
+                    } else {
+                        solutionLog.appendText("" + j + ". " + state.toString());
+                    }
+                    j++;
+                }
+            } else {
+                solutionLog.appendText("No alternate solution available\n");
+            }
+        } else {
+            solutionLog.appendText("No solution available for current state\n");
+        }
         declareGameOver();
     }
 
@@ -148,6 +198,9 @@ public class Controller {
         transportButton.setDisable(true);
         hintButton.setDisable(true);
         startOverButton.setDisable(false);
+
+        if (curNode.isAccepting())
+            transportLog.appendText("You won!\n");
     }
 
     public void startOverTheGame() {
@@ -156,8 +209,13 @@ public class Controller {
         startOverButton.setDisable(true);
         hintButton.setDisable(false);
         transportButton.setDisable(false);
+        solutionLog.clear();
+        transportLog.clear();
 
         rocket.setVisible(true);
+//        rocket.setLayoutX(280.0);
+//        rocket.setLayoutY(380.0);
+//        isOnEarth = true;
 
         if (!isOnEarth) {
             animateRocket.setByX(-300f);

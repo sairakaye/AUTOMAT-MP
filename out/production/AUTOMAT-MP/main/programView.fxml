@@ -31,11 +31,11 @@
             <Image url="@../res/scientist.png" />
          </image>
       </ImageView>
-      <JFXTextArea fx:id="transportLog" disable="true" editable="false" focusColor="#fbed2d" focusTraversable="false" layoutX="111.0" layoutY="46.0" prefHeight="164.0" prefWidth="360.0" style="-fx-text-fill: #ffffff; -fx-background-color: #14213e; -fx-opacity: 1;">
+      <JFXTextArea fx:id="transportLog" editable="false" focusColor="#fbed2d" focusTraversable="false" layoutX="111.0" layoutY="46.0" prefHeight="164.0" prefWidth="360.0" style="-fx-text-fill: #ffffff; -fx-background-color: #14213e; -fx-opacity: 1;">
          <cursor>
             <Cursor fx:constant="NONE" />
          </cursor></JFXTextArea>
-      <JFXTextArea fx:id="solutionLog" disable="true" editable="false" focusColor="#fbed2d" focusTraversable="false" layoutX="434.0" layoutY="520.0" prefHeight="178.0" prefWidth="360.0" style="-fx-text-fill: #ffffff; -fx-background-color: #14213e; -fx-opacity: 1;">
+      <JFXTextArea fx:id="solutionLog" editable="false" focusColor="#fbed2d" focusTraversable="false" layoutX="434.0" layoutY="520.0" prefHeight="178.0" prefWidth="360.0" style="-fx-text-fill: #ffffff; -fx-background-color: #14213e; -fx-opacity: 1;">
          <cursor>
             <Cursor fx:constant="NONE" />
          </cursor>

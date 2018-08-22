@@ -207,6 +207,103 @@ public class Node {
         return children;
     }
 
+    public List<Node> generateChildrenType2(){
+        children = new ArrayList<Node>();
+
+        //EARTH TO MARS
+        if (shipAt == Position.EARTH){
+            //transport bag of grain to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth, nGrainEarth - 1, Position.MARS,
+                    nPersonMars, nLionMars, nCowMars, nGrainMars + 1));
+
+            //transport lion to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth - 1, nCowEarth, nGrainEarth, Position.MARS,
+                    nPersonMars, nLionMars + 1, nCowMars, nGrainMars));
+
+            //transport cow to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth - 1, nGrainEarth, Position.MARS,
+                    nPersonMars, nLionMars, nCowMars + 1, nGrainMars));
+
+            //transport human to Mars
+            validateAndAdd(children, new Node(nPersonEarth - 1, nLionEarth, nCowEarth, nGrainEarth, Position.MARS,
+                    nPersonMars + 1, nLionMars, nCowMars, nGrainMars));
+
+            //transport 2 humans to Mars
+            validateAndAdd(children, new Node(nPersonEarth - 2, nLionEarth, nCowEarth, nGrainEarth, Position.MARS,
+                    nPersonMars + 2, nLionMars, nCowMars, nGrainMars));
+
+            //transport 1 human and 1 lion to Mars
+            validateAndAdd(children, new Node(nPersonEarth - 1, nLionEarth - 1, nCowEarth, nGrainEarth, Position.MARS,
+                    nPersonMars + 1, nLionMars + 1, nCowMars, nGrainMars));
+
+            //transport 1 human and 1 cow to Mars
+            validateAndAdd(children, new Node(nPersonEarth - 1, nLionEarth, nCowEarth - 1, nGrainEarth, Position.MARS,
+                    nPersonMars + 1, nLionMars, nCowMars + 1, nGrainMars));
+
+            //transport 1 human and 1 grain to Mars
+            validateAndAdd(children, new Node(nPersonEarth - 1, nLionEarth, nCowEarth, nGrainEarth - 1, Position.MARS,
+                    nPersonMars + 1, nLionMars, nCowMars, nGrainMars + 1));
+
+            //transport 1 lion and 1 cow to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth - 1, nCowEarth - 1, nGrainEarth, Position.MARS,
+                    nPersonMars, nLionMars + 1, nCowMars + 1, nGrainMars));
+
+            //transport 1 lion and 1 grain to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth - 1, nCowEarth, nGrainEarth - 1, Position.MARS,
+                    nPersonMars, nLionMars + 1, nCowMars, nGrainMars + 1));
+
+            //transport 1 cow and 1 grain to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth - 1, nGrainEarth - 1, Position.MARS,
+                    nPersonMars, nLionMars, nCowMars + 1, nGrainMars + 1));
+        } else /*MARS to EARTH*/ {
+            //transport bag of grain to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth, nGrainEarth + 1, Position.EARTH,
+                    nPersonMars, nLionMars, nCowMars, nGrainMars - 1));
+
+            //transport lion to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth + 1, nCowEarth, nGrainEarth, Position.EARTH,
+                    nPersonMars, nLionMars - 1, nCowMars, nGrainMars));
+
+            //transport cow to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth + 1, nGrainEarth, Position.EARTH,
+                    nPersonMars, nLionMars, nCowMars - 1, nGrainMars));
+
+            //transport human to Earth
+            validateAndAdd(children, new Node(nPersonEarth + 1, nLionEarth, nCowEarth, nGrainEarth, Position.EARTH,
+                    nPersonMars - 1, nLionMars, nCowMars, nGrainMars));
+
+            //transport 2 humans to Earth
+            validateAndAdd(children, new Node(nPersonEarth + 2, nLionEarth, nCowEarth, nGrainEarth, Position.EARTH,
+                    nPersonMars - 2, nLionMars, nCowMars, nGrainMars));
+
+            //transport 1 human and 1 lion to Earth
+            validateAndAdd(children, new Node(nPersonEarth + 1, nLionEarth + 1, nCowEarth, nGrainEarth, Position.EARTH,
+                    nPersonMars - 1, nLionMars - 1, nCowMars, nGrainMars));
+
+            //transport 1 human and 1 cow to Earth
+            validateAndAdd(children, new Node(nPersonEarth + 1, nLionEarth, nCowEarth + 1, nGrainEarth, Position.EARTH,
+                    nPersonMars - 1, nLionMars, nCowMars - 1, nGrainMars));
+
+            //transport 1 human and 1 grain to Earth
+            validateAndAdd(children, new Node(nPersonEarth + 1, nLionEarth, nCowEarth, nGrainEarth + 1, Position.EARTH,
+                    nPersonMars - 1, nLionMars, nCowMars, nGrainMars - 1));
+
+            //transport 1 lion and 1 cow to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth + 1, nCowEarth + 1, nGrainEarth, Position.EARTH,
+                    nPersonMars, nLionMars - 1, nCowMars - 1, nGrainMars));
+
+            //transport 1 lion and 1 grain to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth + 1, nCowEarth, nGrainEarth + 1, Position.EARTH,
+                    nPersonMars, nLionMars - 1, nCowMars, nGrainMars - 1));
+
+            //transport 1 cow and 1 grain to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth + 1, nGrainEarth + 1, Position.EARTH,
+                    nPersonMars, nLionMars, nCowMars - 1, nGrainMars - 1));
+        }
+
+        return children;
+    }
+
     public void validateAndAdd(List<Node> child, Node testSubject){
         if (testSubject.isValid()){
             testSubject.setParent(this);
@@ -323,7 +420,7 @@ public class Node {
         this.nGrainMars = nGrainMars;
     }
 
-    public static void printSolution(Node solution) {
+    public static List<Node> getSolution(Node solution) {
         if (solution == null) {
             System.out.print("\nNo solution found.");
         } else {
@@ -335,7 +432,9 @@ public class Node {
                 state = state.getParent();
             }
 
-            int depth = path.size() - 1;
+            return path;
+
+            /*int depth = path.size() - 1;
             for (int i = depth; i >= 0; i--) {
                 state = path.get(i);
                 if (state.isAccepting()) {
@@ -344,32 +443,33 @@ public class Node {
                     System.out.print(state.toString());
                 }
             }
-            System.out.println("\nDepth: " + depth);
+            System.out.println("\nDepth: " + depth);*/
         }
+
+        return null;
     }
 
     public String toString(){
+        String toSend = "";
 
         if (shipAt == Position.EARTH){
-            return ("Humans on Earth: " + nPersonEarth + " Humans on Mars: " + nPersonMars + "\n"
-                    + "Lions on Earth: " + nLionEarth + " Lions on Mars: " + nLionMars + "\n"
-                    + "Cows on Earth: " + nCowEarth + " Cows on Mars: " + nCowMars + "\n"
-                    + "Grain on Earth: " + nGrainEarth + " Grain on Mars: " + nGrainMars + "\n"
-                    + "Currently on Earth\n\n");
-        } else {
-            return ("Humans on Earth: " + nPersonEarth + " Humans on Mars: " + nPersonMars + "\n"
-                    + "Lions on Earth: " + nLionEarth + " Lions on Mars: " + nLionMars + "\n"
-                    + "Cows on Earth: " + nCowEarth + " Cows on Mars: " + nCowMars + "\n"
-                    + "Grain on Earth: " + nGrainEarth + " Grain on Mars: " + nGrainMars + "\n"
-                    + "Currently on Mars\n\n");
-        }
-    }
+            toSend += "For the next step, Earth should have: \n";
 
-    public static void main (String[] args){
-        Node n = new Node(2, 1, 1, 1, Position.EARTH, 0, 0 ,0 ,0);
-        BFS bfs = new BFS();
-        Node sol = bfs.search(n);
-        printSolution(sol);
+            toSend += nPersonEarth + " human(s), ";
+            toSend += nLionEarth + " lion(s), ";
+            toSend += nCowEarth + " cow(s), ";
+            toSend += nGrainEarth + " grain(s)\n\n";
+
+            return toSend;
+        } else {
+            toSend += "For the next step, Mars should have: \n";
+            toSend += nPersonMars + " human(s), ";
+            toSend += nLionMars + " lion(s), ";
+            toSend += nCowMars + " cow(s), ";
+            toSend += nGrainMars + " grain(s)\n\n";
+
+            return toSend;
+        }
     }
 }
 
