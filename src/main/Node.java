@@ -304,6 +304,103 @@ public class Node {
         return children;
     }
 
+    public List<Node> generateChildrenType3(){
+        children = new ArrayList<Node>();
+
+        //EARTH TO MARS
+        if (shipAt == Position.EARTH){
+            //transport bag of grain to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth, nGrainEarth - 1, Position.MARS,
+                    nPersonMars, nLionMars, nCowMars, nGrainMars + 1));
+
+            //transport cow to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth - 1, nGrainEarth, Position.MARS,
+                    nPersonMars, nLionMars, nCowMars + 1, nGrainMars));
+
+            //transport lion to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth - 1, nCowEarth, nGrainEarth, Position.MARS,
+                    nPersonMars, nLionMars + 1, nCowMars, nGrainMars));
+
+            //transport human to Mars
+            validateAndAdd(children, new Node(nPersonEarth - 1, nLionEarth, nCowEarth, nGrainEarth, Position.MARS,
+                    nPersonMars + 1, nLionMars, nCowMars, nGrainMars));
+
+            //transport 2 humans to Mars
+            validateAndAdd(children, new Node(nPersonEarth - 2, nLionEarth, nCowEarth, nGrainEarth, Position.MARS,
+                    nPersonMars + 2, nLionMars, nCowMars, nGrainMars));
+
+            //transport 1 human and 1 lion to Mars
+            validateAndAdd(children, new Node(nPersonEarth - 1, nLionEarth - 1, nCowEarth, nGrainEarth, Position.MARS,
+                    nPersonMars + 1, nLionMars + 1, nCowMars, nGrainMars));
+
+            //transport 1 human and 1 cow to Mars
+            validateAndAdd(children, new Node(nPersonEarth - 1, nLionEarth, nCowEarth - 1, nGrainEarth, Position.MARS,
+                    nPersonMars + 1, nLionMars, nCowMars + 1, nGrainMars));
+
+            //transport 1 human and 1 grain to Mars
+            validateAndAdd(children, new Node(nPersonEarth - 1, nLionEarth, nCowEarth, nGrainEarth - 1, Position.MARS,
+                    nPersonMars + 1, nLionMars, nCowMars, nGrainMars + 1));
+
+            //transport 1 lion and 1 cow to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth - 1, nCowEarth - 1, nGrainEarth, Position.MARS,
+                    nPersonMars, nLionMars + 1, nCowMars + 1, nGrainMars));
+
+            //transport 1 lion and 1 grain to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth - 1, nCowEarth, nGrainEarth - 1, Position.MARS,
+                    nPersonMars, nLionMars + 1, nCowMars, nGrainMars + 1));
+
+            //transport 1 cow and 1 grain to Mars
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth - 1, nGrainEarth - 1, Position.MARS,
+                    nPersonMars, nLionMars, nCowMars + 1, nGrainMars + 1));
+        } else /*MARS to EARTH*/ {
+            //transport bag of grain to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth, nGrainEarth + 1, Position.EARTH,
+                    nPersonMars, nLionMars, nCowMars, nGrainMars - 1));
+
+            //transport cow to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth + 1, nGrainEarth, Position.EARTH,
+                    nPersonMars, nLionMars, nCowMars - 1, nGrainMars));
+
+            //transport lion to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth + 1, nCowEarth, nGrainEarth, Position.EARTH,
+                    nPersonMars, nLionMars - 1, nCowMars, nGrainMars));
+
+            //transport human to Earth
+            validateAndAdd(children, new Node(nPersonEarth + 1, nLionEarth, nCowEarth, nGrainEarth, Position.EARTH,
+                    nPersonMars - 1, nLionMars, nCowMars, nGrainMars));
+
+            //transport 2 humans to Earth
+            validateAndAdd(children, new Node(nPersonEarth + 2, nLionEarth, nCowEarth, nGrainEarth, Position.EARTH,
+                    nPersonMars - 2, nLionMars, nCowMars, nGrainMars));
+
+            //transport 1 human and 1 lion to Earth
+            validateAndAdd(children, new Node(nPersonEarth + 1, nLionEarth + 1, nCowEarth, nGrainEarth, Position.EARTH,
+                    nPersonMars - 1, nLionMars - 1, nCowMars, nGrainMars));
+
+            //transport 1 human and 1 cow to Earth
+            validateAndAdd(children, new Node(nPersonEarth + 1, nLionEarth, nCowEarth + 1, nGrainEarth, Position.EARTH,
+                    nPersonMars - 1, nLionMars, nCowMars - 1, nGrainMars));
+
+            //transport 1 human and 1 grain to Earth
+            validateAndAdd(children, new Node(nPersonEarth + 1, nLionEarth, nCowEarth, nGrainEarth + 1, Position.EARTH,
+                    nPersonMars - 1, nLionMars, nCowMars, nGrainMars - 1));
+
+            //transport 1 lion and 1 cow to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth + 1, nCowEarth + 1, nGrainEarth, Position.EARTH,
+                    nPersonMars, nLionMars - 1, nCowMars - 1, nGrainMars));
+
+            //transport 1 lion and 1 grain to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth + 1, nCowEarth, nGrainEarth + 1, Position.EARTH,
+                    nPersonMars, nLionMars - 1, nCowMars, nGrainMars - 1));
+
+            //transport 1 cow and 1 grain to Earth
+            validateAndAdd(children, new Node(nPersonEarth, nLionEarth, nCowEarth + 1, nGrainEarth + 1, Position.EARTH,
+                    nPersonMars, nLionMars, nCowMars - 1, nGrainMars - 1));
+        }
+
+        return children;
+    }
+
     public void validateAndAdd(List<Node> child, Node testSubject){
         if (testSubject.isValid()){
             testSubject.setParent(this);

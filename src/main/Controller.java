@@ -153,43 +153,41 @@ public class Controller {
         }
     }
 
+    private void appendSolution(int depth, List<Node> path){
+        int j = 1;
+        for (int i = depth - 1; i >= 0; i--) {
+            Node state = path.get(i);
+            if (state.isAccepting()) {
+                solutionLog.appendText("" + j + ". " + state.toString());
+            } else {
+                solutionLog.appendText("" + j + ". " + state.toString());
+            }
+            j++;
+        }
+    }
+
     public void addTextToSolutionLog() {
         solutionLog.clear();
         //solutionLog.appendText("Append rito yung pag mag-hihint na ang lola mo. Pak ganern!\n");
         List<Node> path = curNode.getSolution(searcher.search(curNode));
         if (path != null) {
             int depth = path.size() - 1;
-            int j = 1;
-            for (int i = depth - 1; i >= 0; i--) {
-                Node state = path.get(i);
-                if (state.isAccepting()) {
-                    solutionLog.appendText("" + j + ". " + state.toString());
-                } else {
-                    solutionLog.appendText("" + j + ". " + state.toString());
-                }
-                j++;
-            }
+            appendSolution(depth, path);
             path = curNode.getSolution(searcher.searchV2(curNode));
             if (path != null) {
                 solutionLog.appendText("\nALTERNATE SOLUTION\n");
                 depth = path.size() - 1;
-                j = 1;
-                for (int i = depth - 1; i >= 0; i--) {
-                    Node state = path.get(i);
-                    if (state.isAccepting()) {
-                        solutionLog.appendText("" + j + ". " + state.toString());
-                    } else {
-                        solutionLog.appendText("" + j + ". " + state.toString());
-                    }
-                    j++;
+                appendSolution(depth, path);
+                path = curNode.getSolution(searcher.searchV3(curNode));
+                if (path != null) {
+                    solutionLog.appendText("\nALTERNATE SOLUTION\n");
+                    depth = path.size() - 1;
+                    appendSolution(depth, path);
                 }
-            } else {
-                solutionLog.appendText("No alternate solution available\n");
             }
         } else {
             solutionLog.appendText("No solution available for current state\n");
         }
-        declareGameOver();
     }
 
     public void declareGameOver() {
@@ -211,6 +209,7 @@ public class Controller {
         transportButton.setDisable(false);
         solutionLog.clear();
         transportLog.clear();
+        curNode = initialNode;
 
         rocket.setVisible(true);
 //        rocket.setLayoutX(280.0);
