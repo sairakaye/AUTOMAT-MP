@@ -109,7 +109,7 @@ public class Controller {
          */
         curNode = new Node(earthBoy.isVisible(), earthGirl.isVisible(), earthLion.isVisible(), earthCow.isVisible(), earthGrain.isVisible(), isOnEarth,
                            marsBoy.isVisible(), marsGirl.isVisible(), marsLion.isVisible(), marsCow.isVisible(), marsGrain.isVisible());
-        searcher.search(curNode);
+        //searcher.search(curNode, 1);
 
         if (!curNode.isValid())
             isGameOver = true;
@@ -169,8 +169,20 @@ public class Controller {
     public void addTextToSolutionLog() {
         solutionLog.clear();
         //solutionLog.appendText("Append rito yung pag mag-hihint na ang lola mo. Pak ganern!\n");
-        List<Node> path = curNode.getSolution(searcher.search(curNode));
-        if (path != null) {
+        int i = 1;
+        do{
+            solutionLog.appendText("Solution " + i + "\n");
+            List<Node> path = curNode.getSolution(searcher.search(curNode, i));
+            if (path != null){
+                int depth = path.size() - 1;
+                appendSolution(depth, path);
+            } else {
+                solutionLog.appendText("No solution available for current state\n");
+            }
+            i++;
+        } while (i < 5);
+
+        /*if (path != null) {
             int depth = path.size() - 1;
             appendSolution(depth, path);
             path = curNode.getSolution(searcher.searchV2(curNode));
@@ -183,11 +195,14 @@ public class Controller {
                     solutionLog.appendText("\nALTERNATE SOLUTION\n");
                     depth = path.size() - 1;
                     appendSolution(depth, path);
+                    path = curNode.getSolution(searcher.searchV4(curNode));
+                    if (path != null){
+                        solutionLog.appendText("\nALTERNATE SOLUTION\n");
+                        depth = path.size() - 1;
+                        appendSolution(depth, path);
+                    }
                 }
-            }
-        } else {
-            solutionLog.appendText("No solution available for current state\n");
-        }
+            }*/
     }
 
     public void declareGameOver() {
