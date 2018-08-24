@@ -304,7 +304,7 @@ public class Node {
         return children;
     }
 
-    public List<Node> generateChildrenType3(){
+    public List<Node> generateChildrenType4(){
         children = new ArrayList<Node>();
 
         //EARTH TO MARS
@@ -401,7 +401,7 @@ public class Node {
         return children;
     }
 
-    public List<Node> generateChildrenType4(){
+    public List<Node> generateChildrenType3(){
         children = new ArrayList<Node>();
 
         //EARTH TO MARS
@@ -614,6 +614,10 @@ public class Node {
         this.nGrainMars = nGrainMars;
     }
 
+    public List<Node> getChildren(){
+        return children;
+    }
+
     public static List<Node> getSolution(Node solution) {
         if (solution == null) {
             System.out.print("\nNo solution found.");
@@ -649,18 +653,38 @@ public class Node {
         if (shipAt == Position.EARTH){
             toSend += "For the next step, Earth should have: \n";
 
-            toSend += nPersonEarth + " human(s), ";
-            toSend += nLionEarth + " lion(s), ";
-            toSend += nCowEarth + " cow(s), ";
-            toSend += nGrainEarth + " grain(s)\n\n";
+            if (nPersonEarth > 0)
+                toSend += nPersonEarth + " human(s)\n";
+
+            if (nLionEarth > 0)
+                toSend += nLionEarth + " lion(s)\n";
+
+            if (nCowEarth > 0)
+                toSend += nCowEarth + " cow(s)\n";
+
+            if (nGrainEarth > 0) {
+                toSend += nGrainEarth + " grain(s)\n\n";
+            } else {
+                toSend += "\n";
+            }
 
             return toSend;
         } else {
             toSend += "For the next step, Mars should have: \n";
-            toSend += nPersonMars + " human(s), ";
-            toSend += nLionMars + " lion(s), ";
-            toSend += nCowMars + " cow(s), ";
-            toSend += nGrainMars + " grain(s)\n\n";
+            if (nPersonMars > 0)
+                toSend += nPersonMars + " human(s)\n";
+
+            if (nLionMars > 0)
+                toSend += nLionMars + " lion(s)\n";
+
+            if (nCowMars > 0)
+                toSend += nCowMars + " cow(s)\n";
+
+            if (nGrainMars > 0) {
+                toSend += nGrainMars + " grain(s)\n\n";
+            } else {
+                toSend += "\n";
+            }
 
             return toSend;
         }

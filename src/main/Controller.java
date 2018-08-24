@@ -44,6 +44,8 @@ public class Controller {
     private Node initialNode;
     private Node curNode;
     private BFS searcher;
+    private ArrayList<List<Node>> solutionPaths;
+    private int incrementor;
 
     // The "Constructor" of JavaFX
     @FXML
@@ -53,6 +55,8 @@ public class Controller {
         initialNode = new Node(2, 1, 1, 1, Position.EARTH, 0, 0, 0, 0);
         curNode = initialNode;
         searcher = new BFS();
+        //solutionPaths = new ArrayList<List<Node>>();
+        incrementor = 0;
 
         startOverButton.setDisable(true);
         gameOverLabel.setVisible(false);
@@ -103,13 +107,13 @@ public class Controller {
             animateRocket.setByY(300f);
             isOnEarth = true;
         }
+        incrementor++;
 
         /** Insert Back-End Logic Here
          *  Add na lang ng controller for back-end kung overwhelming na rito haha.
          */
         curNode = new Node(earthBoy.isVisible(), earthGirl.isVisible(), earthLion.isVisible(), earthCow.isVisible(), earthGrain.isVisible(), isOnEarth,
                            marsBoy.isVisible(), marsGirl.isVisible(), marsLion.isVisible(), marsCow.isVisible(), marsGrain.isVisible());
-        //searcher.search(curNode, 1);
 
         if (!curNode.isValid())
             isGameOver = true;
@@ -170,40 +174,42 @@ public class Controller {
         solutionLog.clear();
         //solutionLog.appendText("Append rito yung pag mag-hihint na ang lola mo. Pak ganern!\n");
         int i = 1;
+
         do{
             solutionLog.appendText("Solution " + i + "\n");
             List<Node> path = curNode.getSolution(searcher.search(curNode, i));
             if (path != null){
                 int depth = path.size() - 1;
                 appendSolution(depth, path);
-            } else {
+            } else
                 solutionLog.appendText("No solution available for current state\n");
-            }
             i++;
         } while (i < 5);
+    }
 
-        /*if (path != null) {
-            int depth = path.size() - 1;
-            appendSolution(depth, path);
-            path = curNode.getSolution(searcher.searchV2(curNode));
-            if (path != null) {
-                solutionLog.appendText("\nALTERNATE SOLUTION\n");
-                depth = path.size() - 1;
-                appendSolution(depth, path);
-                path = curNode.getSolution(searcher.searchV3(curNode));
-                if (path != null) {
-                    solutionLog.appendText("\nALTERNATE SOLUTION\n");
-                    depth = path.size() - 1;
-                    appendSolution(depth, path);
-                    path = curNode.getSolution(searcher.searchV4(curNode));
-                    if (path != null){
-                        solutionLog.appendText("\nALTERNATE SOLUTION\n");
-                        depth = path.size() - 1;
-                        appendSolution(depth, path);
+    /*private boolean solutionPathExists(List<Node> path){
+        if (solutionPaths.isEmpty()){
+            return false;
+        } else{
+            boolean exists = true;
+            for (int i = 0; i < solutionPaths.size(); i++){
+                if (incrementor <= 2) {
+                    for (int j = path.size() - 2; j >= 0; j--) {
+                        if (!path.get(j).equals(solutionPaths.get(i).get(j))) {
+                            exists = false;
+                        }
+                    }
+                } else {
+                    for (int j = path.size() - incrementor; j >= incrementor; j--){
+                        if (!path.get(j).equals(solutionPaths.get(i).get(j))) {
+                            exists = false;
+                        }
                     }
                 }
-            }*/
-    }
+            }
+            return exists;
+        }
+    }*/
 
     public void declareGameOver() {
         rocket.setVisible(false);
@@ -225,11 +231,13 @@ public class Controller {
         solutionLog.clear();
         transportLog.clear();
         curNode = initialNode;
+        incrementor = 0;
 
         rocket.setVisible(true);
 //        rocket.setLayoutX(280.0);
 //        rocket.setLayoutY(380.0);
 //        isOnEarth = true;
+        isOnEarth = !isOnEarth;
 
         if (!isOnEarth) {
             animateRocket.setByX(-300f);
