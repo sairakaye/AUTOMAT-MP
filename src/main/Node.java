@@ -27,6 +27,7 @@ public class Node {
         this.nLionMars = nLionMars;
         this.nCowMars = nCowMars;
         this.nGrainMars = nGrainMars;
+        children = new ArrayList<Node>();
     }
 
     public Node(boolean nBoyEarth, boolean nGirlEarth, boolean nLionEarth, boolean nCowEarth, boolean nGrainEarth, boolean onEarth,
@@ -73,6 +74,7 @@ public class Node {
             this.nCowMars = 1;
         if (nGrainMars)
             this.nGrainMars = 1;
+        children = new ArrayList<Node>();
     }
 
     public boolean isAccepting(){
@@ -304,7 +306,7 @@ public class Node {
         return children;
     }
 
-    public List<Node> generateChildrenType4(){
+    public List<Node> generateChildrenType3(){
         children = new ArrayList<Node>();
 
         //EARTH TO MARS
@@ -401,7 +403,7 @@ public class Node {
         return children;
     }
 
-    public List<Node> generateChildrenType3(){
+    public List<Node> generateChildrenType4(){
         children = new ArrayList<Node>();
 
         //EARTH TO MARS
@@ -502,10 +504,6 @@ public class Node {
         if (testSubject.isValid()){
             testSubject.setParent(this);
             children.add(testSubject);
-            /*System.out.println("Humans on Earth: " + testSubject.getnPersonEarth() + " Humans on Mars: " + testSubject.getnPersonMars() + " " + testSubject.isOnEarth());
-            System.out.println("Lions on Earth: " + testSubject.getnLionEarth() + " Lions on Mars: " + testSubject.getnLionMars() + testSubject.isOnEarth());
-            System.out.println("Cows on Earth: " + testSubject.getnCowEarth() + " Cows on Mars: " + testSubject.getnCowMars() + testSubject.isOnEarth());
-            System.out.println("Grain on Earth: " + testSubject.getnGrainEarth() + " Grain on Mars: " + testSubject.getnGrainMars() + testSubject.isOnEarth() + "\n");*/
         }
     }
 
@@ -625,23 +623,12 @@ public class Node {
             System.out.println("\nSolution: ");
             List<Node> path = new ArrayList<Node>();
             Node state = solution;
-            while(state != null) {
-                path.add(state);
-                state = state.getParent();
+            while(state != null) { //while state is not null
+                path.add(state); //add the path of the solution to the list
+                state = state.getParent(); //get the parent of this state
             }
 
             return path;
-
-            /*int depth = path.size() - 1;
-            for (int i = depth; i >= 0; i--) {
-                state = path.get(i);
-                if (state.isAccepting()) {
-                    System.out.print(state.toString());
-                } else {
-                    System.out.print(state.toString());
-                }
-            }
-            System.out.println("\nDepth: " + depth);*/
         }
 
         return null;

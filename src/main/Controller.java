@@ -98,6 +98,8 @@ public class Controller {
             System.out.println(tempPassengers.get(i));
         }
 
+
+
         if (isOnEarth) {
             animateRocket.setByX(300f);
             animateRocket.setByY(-300f);
@@ -172,7 +174,6 @@ public class Controller {
 
     public void addTextToSolutionLog() {
         solutionLog.clear();
-        //solutionLog.appendText("Append rito yung pag mag-hihint na ang lola mo. Pak ganern!\n");
         int i = 1;
 
         do{
@@ -222,22 +223,22 @@ public class Controller {
             transportLog.appendText("You lost!\n");
             if (curNode.getShipAt() == Position.EARTH) {
                 if (curNode.getnPersonMars() > 0 && curNode.getnCowMars() > 0)
-                    transportLog.appendText("The cow was left with (a) human(s)!\n");
+                    transportLog.appendText("The cow cannot be left with (a) human(s)!\n");
                 if (curNode.getnCowMars() > 0 && curNode.getnGrainMars() > 0)
-                    transportLog.appendText("The grain was left with a cow!\n");
+                    transportLog.appendText("The grain cannot be left with a cow!\n");
                 if (curNode.getnLionMars() > 0 && curNode.getnCowMars() > 0)
-                    transportLog.appendText("The cow was left with a lion!\n");
+                    transportLog.appendText("The cow cannot be left with a lion!\n");
                 if (curNode.getnPersonMars() > 0 && curNode.getnLionMars() > 0)
-                    transportLog.appendText("The lion was left with (a) human(s)!\n");
+                    transportLog.appendText("The lion cannot be left with (a) human(s)!\n");
             } else {
                 if (curNode.getnPersonEarth() > 0 && curNode.getnCowEarth() > 0)
-                    transportLog.appendText("The cow was left with (a) human(s)!\n");
+                    transportLog.appendText("The cow cannot be left with (a) human(s)!\n");
                 if (curNode.getnCowEarth() > 0 && curNode.getnGrainEarth() > 0)
-                    transportLog.appendText("The grain was left with a cow!\n");
+                    transportLog.appendText("The grain cannot be left with a cow!\n");
                 if (curNode.getnLionEarth() > 0 && curNode.getnCowEarth() > 0)
-                    transportLog.appendText("The cow was left with a lion!\n");
+                    transportLog.appendText("The cow cannot be left with a lion!\n");
                 if (curNode.getnPersonEarth() > 0 && curNode.getnLionEarth() > 0)
-                    transportLog.appendText("The lion was left with (a) human(s)!\n");
+                    transportLog.appendText("The lion cannot be left with (a) human(s)!\n");
             }
         }
 
@@ -259,9 +260,6 @@ public class Controller {
         incrementor = 0;
 
         rocket.setVisible(true);
-//        rocket.setLayoutX(280.0);
-//        rocket.setLayoutY(380.0);
-//        isOnEarth = true;
         isOnEarth = !isOnEarth;
 
         if (!isOnEarth) {
