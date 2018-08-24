@@ -218,8 +218,33 @@ public class Controller {
         hintButton.setDisable(true);
         startOverButton.setDisable(false);
 
-        if (curNode.isAccepting())
+        if (!curNode.isValid()) {
+            transportLog.appendText("You lost!\n");
+            if (curNode.getShipAt() == Position.EARTH) {
+                if (curNode.getnPersonMars() > 0 && curNode.getnCowMars() > 0)
+                    transportLog.appendText("The cow was left with (a) human(s)!\n");
+                if (curNode.getnCowMars() > 0 && curNode.getnGrainMars() > 0)
+                    transportLog.appendText("The grain was left with a cow!\n");
+                if (curNode.getnLionMars() > 0 && curNode.getnCowMars() > 0)
+                    transportLog.appendText("The cow was left with a lion!\n");
+                if (curNode.getnPersonMars() > 0 && curNode.getnLionMars() > 0)
+                    transportLog.appendText("The lion was left with (a) human(s)!\n");
+            } else {
+                if (curNode.getnPersonEarth() > 0 && curNode.getnCowEarth() > 0)
+                    transportLog.appendText("The cow was left with (a) human(s)!\n");
+                if (curNode.getnCowEarth() > 0 && curNode.getnGrainEarth() > 0)
+                    transportLog.appendText("The grain was left with a cow!\n");
+                if (curNode.getnLionEarth() > 0 && curNode.getnCowEarth() > 0)
+                    transportLog.appendText("The cow was left with a lion!\n");
+                if (curNode.getnPersonEarth() > 0 && curNode.getnLionEarth() > 0)
+                    transportLog.appendText("The lion was left with (a) human(s)!\n");
+            }
+        }
+
+        if (curNode.isAccepting()) {
+            transportLog.appendText("Successfully transported all things to Mars!\n");
             transportLog.appendText("You won!\n");
+        }
     }
 
     public void startOverTheGame() {
